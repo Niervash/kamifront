@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const SearchInput = () => {
+export const SearchInput = ({ onSearch }) => {
   const [query, setQuery] = useState("");
-  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -12,7 +11,7 @@ export const SearchInput = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (query.trim()) {
-      navigate(`/search?query=${query}`);
+      onSearch(query);
     }
   };
 

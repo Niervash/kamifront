@@ -24,7 +24,7 @@ export const LoginSection = () => {
       }
 
       toast.success("Login berhasil!");
-      navigate("/jasa"); // Arahkan ke halaman jasa jika login sukses
+      navigate("/"); // Arahkan ke halaman jasa jika login sukses
     } catch (error) {
       toast.error(error.message || "Terjadi kesalahan saat login.");
     }

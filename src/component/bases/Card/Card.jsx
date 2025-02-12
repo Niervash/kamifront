@@ -5,15 +5,6 @@ import { useNavigate } from "react-router-dom";
 export const Card = ({ source, title, location, jasa }) => {
   const navigate = useNavigate();
 
-  const handleDetailClick = () => {
-    if (!jasa || !jasa.id) {
-      console.error("Jasa atau ID tidak ditemukan:", jasa);
-      return;
-    }
-
-    navigate(`/jasa/${jasa.id}`); // Navigasi ke halaman detail berdasarkan ID jasa
-  };
-
   return (
     <div className="max-w-sm bg-transparent rounded-lg shadow-lg overflow-hidden">
       <img
@@ -35,7 +26,7 @@ export const Card = ({ source, title, location, jasa }) => {
         )}
         <button
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 cursor-pointer"
-          onClick={handleDetailClick}
+          onClick={""}
         >
           Selengkapnya
           <svg

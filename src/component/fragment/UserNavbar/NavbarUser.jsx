@@ -10,6 +10,7 @@ export const NavbarUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [email, setUserEmail] = useState("");
   const [role, setUserRole] = useState("");
+  const [navemail, setNavemail] = useState("");
   const navigate = useNavigate(); // Navigasi ke halaman pencarian
 
   useEffect(() => {
@@ -17,7 +18,11 @@ export const NavbarUser = () => {
     const email = Cookies.get("email");
     const role = Cookies.get("role");
 
+    const emailstore = sessionStorage.getItem("email");
+
+    setNavemail(emailstore);
     setIsLoggedIn(!!token);
+
     if (email) setUserEmail(email);
     if (role) setUserRole(role);
   }, []);
@@ -34,7 +39,7 @@ export const NavbarUser = () => {
   // Fungsi untuk menangani pencarian
   const handleSearch = (query) => {
     if (query.trim()) {
-      navigate(`/search?query=${query}`);
+      navigate(`jasas/search?query=${query}`);
     }
   };
 
@@ -70,7 +75,9 @@ export const NavbarUser = () => {
               </button>
               {dropdownOpen && (
                 <div className="absolute right-0 w-48 bg-white border rounded-lg shadow-lg p-2">
-                  <p className="px-4 py-2 text-gray-800 text-sm">{role}</p>
+                  <h4 className="px-4 py-2 text-gray-800 text-center text-lg">
+                    {navemail}
+                  </h4>
                   <button
                     onClick={handleLogout}
                     className="block w-full text-left px-4 py-2 text-center text-white bg-red-800 hover:bg-red-500 rounded-lg"

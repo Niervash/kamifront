@@ -9,6 +9,7 @@ import { LoginPage } from "./component/pages/Auth/Login/LoginPage";
 import { RegisterPage } from "./component/pages/Auth/Register/RegisterPage";
 import { DetailUserPage } from "./component/pages/user/Detail/DetailUserPage";
 import { ViewUserPage } from "./component/pages/user/Menu/ViewUserPage";
+import JasaSearch from "./component/section/user/Menu/UserSearchView";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +33,8 @@ const router = createBrowserRouter([
     element: <MenuUserPage />,
   },
   {
-    path: "/search",
-    element: <ViewUserPage />,
+    path: "/jasa/search",
+    element: <JasaSearch />,
   },
   {
     path: "/jasa/detail",

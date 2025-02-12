@@ -15,7 +15,7 @@ export async function IsLogin({ email, password }) {
         "Content-Type": "application/json",
       },
     });
-
+    sessionStorage.setItem("email", email); // Simpan email di session storage
     console.log("Login successful:", response.data);
     Cookies.set("token", response.data.token, { expires: 7 });
     Cookies.set("role", response.data.role, { expires: 7 }); // Simpan token JWT di cookies
@@ -115,7 +115,7 @@ export async function searchData(query) {
   }
 
   try {
-    const response = await axios.get(`${BASE_URL}/search?query=${query}`, {
+    const response = await axios.get(`${BASE_URL}/jasa/search?query=${query}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
