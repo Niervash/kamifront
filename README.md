@@ -1,4 +1,4 @@
-# Dokumentasi Backend
+# Dokumentasi FrondEnd
 
 ## Persyaratan
 
@@ -9,7 +9,7 @@
 
 1. Masuk ke direktori proyek:
    ```bash
-   cd backend
+   cd kamifront
    ```
 2. Instal dependensi:
    ```bash
