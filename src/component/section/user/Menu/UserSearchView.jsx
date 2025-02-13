@@ -6,6 +6,7 @@ import { searchData } from "../../../COnfig/Net_conn";
 
 const UserSearchView = () => {
   const query = new URLSearchParams(window.location.search).get("q");
+  const location = useLocation(); // Untuk mendeteksi perubahan URL
   const [jasaList, setJasaList] = useState([]);
   const [error, setError] = useState(null); // Define the error state
 
@@ -18,7 +19,8 @@ const UserSearchView = () => {
           setError("An error occurred while fetching data."); // Set the error message
         });
     }
-  }, [query]);
+    console.log(jasaList);
+  }, [query, location]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -35,6 +37,7 @@ const UserSearchView = () => {
               {jasaList.length > 0 ? (
                 jasaList.map((jasa) => (
                   <Card
+                    id_jasa={jasa.id}
                     key={jasa.id}
                     source={jasa.image_url}
                     title={jasa.title}
@@ -51,6 +54,25 @@ const UserSearchView = () => {
               )}
             </div>
           </div>
+
+          {/* Pagination Controls */}
+          {/* {totalPages > 1 && (
+            <div className="flex justify-center mt-4">
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index + 1}
+                  onClick={() => handlePageChange(index + 1)}
+                  className={`mx-1 py-1 px-3 rounded ${
+                    currentPage === index + 1
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  {index + 1}
+                </button>
+              ))}
+            </div>
+          )} */}
         </section>
       </div>
     </div>

@@ -1,16 +1,19 @@
-import { useState, React } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const SearchInput = ({}) => {
+export const SearchInput = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    try {
-      navigate(`/jasa/search?q=${query.trim()}`);
-    } catch (error) {
-      alert(error.message);
+    if (query.trim()) {
+      try {
+        navigate(`/jasa/search?q=${query.trim()}`);
+        setQuery(""); // Clear the input after search
+      } catch (error) {
+        alert(error.message);
+      }
     }
   };
 

@@ -28,15 +28,21 @@ const router = createBrowserRouter([
   },
   {
     path: "/jasa",
-    element: <MenuUserPage />,
+    element: (
+      <PrivateRoute allowedRoles={["buyer"]} element={<MenuUserPage />} />
+    ),
   },
   {
     path: "/jasa/:id",
-    element: <MenuDetailView />,
+    element: (
+      <PrivateRoute allowedRoles={["buyer"]} element={<MenuDetailView />} />
+    ),
   },
   {
     path: "/jasa/search",
-    element: <UserSearchView />,
+    element: (
+      <PrivateRoute allowedRoles={["buyer"]} element={<UserSearchView />} />
+    ),
   },
 ]);
 createRoot(document.getElementById("root")).render(
