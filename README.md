@@ -24,4 +24,4 @@ Untuk menjalankan FE, gunakan perintah berikut:
 npm run dev
 ```
 
-Server akan berjalan di `http://localhost:5137`.
+Server akan berjalan di `http://localhost:5173`.
