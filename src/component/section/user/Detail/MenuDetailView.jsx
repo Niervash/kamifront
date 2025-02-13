@@ -59,16 +59,9 @@ export const MenuDetailView = () => {
                   </h2>
                   {/* Description */}
                   <p className="text-gray-600 mb-4 text-center">
+                    <span className="font-bold">Kategori</span> : &nbsp;
                     {jasa?.category}
                   </p>
-                  <div className="mb-4">
-                    {/* price */}
-                    <div className="flex justify-center mb-4">
-                      <span className="text-2xl font-bold mr-2">
-                        {jasa?.price}
-                      </span>
-                    </div>
-                  </div>
 
                   <p className="text-gray-700 mb-6 text-center">
                     {jasa?.description}
