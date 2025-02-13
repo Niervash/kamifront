@@ -79,6 +79,11 @@ export const NavbarUser = ({}) => {
                   <h4 className="px-4 py-2 text-gray-800 text-center text-lg">
                     {navemail}
                   </h4>
+                  <Link to={"/jasa/"}>
+                    <button className="mb-1 block w-full text-left px-4 py-2 text-center text-white bg-red-800 hover:bg-red-500 rounded-lg">
+                      Menu
+                    </button>
+                  </Link>
                   <button
                     onClick={handleLogout}
                     className="block w-full text-left px-4 py-2 text-center text-white bg-red-800 hover:bg-red-500 rounded-lg"

@@ -12,6 +12,7 @@ import { ViewUserPage } from "./component/pages/user/Menu/ViewUserPage";
 import { MenuDetailView } from "./component/section/user/Detail/MenuDetailView";
 import { UserMenuView } from "./component/section/user/Menu/UserMenuView";
 import UserSearchView from "./component/section/user/Menu/UserSearchView";
+import AuthWrapper from "./component/COnfig/AuthWrapper";
 
 const router = createBrowserRouter([
   {
@@ -29,19 +30,25 @@ const router = createBrowserRouter([
   {
     path: "/jasa",
     element: (
-      <PrivateRoute allowedRoles={["buyer"]} element={<MenuUserPage />} />
+      <AuthWrapper requiredRole="buyer">
+        <MenuUserPage />
+      </AuthWrapper>
     ),
   },
   {
     path: "/jasa/:id",
     element: (
-      <PrivateRoute allowedRoles={["buyer"]} element={<MenuDetailView />} />
+      <AuthWrapper requiredRole="buyer">
+        <MenuDetailView />
+      </AuthWrapper>
     ),
   },
   {
     path: "/jasa/search",
     element: (
-      <PrivateRoute allowedRoles={["buyer"]} element={<UserSearchView />} />
+      <AuthWrapper requiredRole="buyer">
+        <UserSearchView />
+      </AuthWrapper>
     ),
   },
 ]);
