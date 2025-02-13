@@ -5,13 +5,14 @@ import logo from "../../Assets/logo.png.png";
 import profilePic from "../../Assets/profil.jpg";
 import Cookies from "js-cookie";
 
-export const NavbarUser = () => {
+export const NavbarUser = ({}) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [email, setUserEmail] = useState("");
   const [role, setUserRole] = useState("");
   const [navemail, setNavemail] = useState("");
-  const navigate = useNavigate(); // Navigasi ke halaman pencarian
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = Cookies.get("token");
@@ -39,7 +40,7 @@ export const NavbarUser = () => {
   // Fungsi untuk menangani pencarian
   const handleSearch = (query) => {
     if (query.trim()) {
-      navigate(`jasa/search?query=${query}`);
+      navigate(`/jasa/search?query=${query.trim()}`);
     }
   };
 
@@ -55,7 +56,7 @@ export const NavbarUser = () => {
 
         {/* Search Form */}
         <div className="flex-grow md:max-w-lg mx-4">
-          <SearchInput onSearch={handleSearch} />
+          <SearchInput />
         </div>
 
         {/* Profile Button or Login Button */}
