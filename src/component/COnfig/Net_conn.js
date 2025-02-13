@@ -141,24 +141,19 @@ export const fetchJasaDetail = async (id) => {
   }
 };
 
-// Search Bar
-export const searchData = async () => {
+// Search Data Function
+export const searchData = async (query) => {
   if (!query.trim()) {
-    return alert("Masukkan kata kunci pencarian!");
+    throw new Error("Masukkan kata kunci pencarian!");
   }
 
   try {
     const response = await axios.get(
       `${BASE_URL}/jasa/search?q=${query.trim()}`
     );
-    const jasaData = response.data.data;
-
-    if (jasaData.length === 0) {
-      console.log("Tidak ada jasa ditemukan.:", response.data);
-    } else {
-      console.log(" ", response.data);
-    }
+    return response.data.data; // Return the data for processing
   } catch (err) {
-    console.log("Gagal mengambil data jasa! ", response.data);
+    console.error("Gagal mengambil data jasa!", err);
+    throw new Error("Gagal mengambil data jasa!");
   }
 };

@@ -31,20 +31,16 @@ const router = createBrowserRouter([
     element: <MenuUserPage />,
   },
   {
-    path: "/admin",
-    element: <MenuUserPage />,
-  },
-  {
-    path: "/jasa",
-    element: <UserMenuView />,
-  },
-  {
     path: "/jasa/:id",
     element: <MenuDetailView />,
   },
   {
     path: "/jasa/search",
     element: <UserSearchView />,
+  },
+  {
+    path: "jasa/search?query=", // Example route for the ViewUserPage
+    element: <ViewUserPage />,
   },
 ]);
 createRoot(document.getElementById("root")).render(
