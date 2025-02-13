@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SearchInput } from "../../bases/SearchInput/SearchInput";
 import logo from "../../Assets/logo.png.png";
-import profilePic from "../../Assets/hytham.jpg";
+import profilePic from "../../Assets/profil.jpg";
 import Cookies from "js-cookie";
 
 export const NavbarUser = () => {
@@ -39,7 +39,7 @@ export const NavbarUser = () => {
   // Fungsi untuk menangani pencarian
   const handleSearch = (query) => {
     if (query.trim()) {
-      navigate(`jasas/search?query=${query}`);
+      navigate(`jasa/search?query=${query}`);
     }
   };
 

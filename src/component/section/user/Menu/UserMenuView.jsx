@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../../../bases/Card/Card";
-import { TitleTho } from "../../../bases/Title/Title";
 import { fetchDataWithJWT } from "../../../COnfig/Net_conn";
 
 export const UserMenuView = () => {
@@ -38,12 +37,13 @@ export const UserMenuView = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="max-w-screen-xl mx-auto py-10">
-        {cardsData.length > 0 && <TitleTho title={"category"} />}
+      <section className="max-w-screen-xl mx-auto py-10 mt-10">
+        <div className="mt-10"></div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10">
           {currentCards.map((card) => (
             <Card
+              id_jasa={card.id}
               key={card.id}
               source={card.image_url}
               title={card.title}

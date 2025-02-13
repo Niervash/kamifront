@@ -105,17 +105,17 @@ export async function IsRegister({ username, email, password }) {
   }
 }
 
-// Fungsi untuk melakukan pencarian data
-export async function searchData(query) {
+// mengambil detail dari jasa dan di tampilkan pada detail Page
+export const fetchJasaDetail = async (id) => {
   const token = Cookies.get("token");
 
   if (!token) {
-    console.warn("No token found. Cannot search data.");
+    console.warn("No token found. Cannot fetch data.");
     throw new Error("Unauthorized: No token provided");
   }
 
   try {
-    const response = await axios.get(`${BASE_URL}/jasa/search?query=${query}`, {
+    const response = await axios.get(`${BASE_URL}/jasa/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -123,14 +123,42 @@ export async function searchData(query) {
       },
     });
 
-    return response.data; // Mengembalikan hasil pencarian
+    return response.data;
   } catch (error) {
+    if (error.response?.status === 401) {
+      console.warn("Unauthorized. Removing token...");
+      Cookies.remove("token");
+      throw new Error("Unauthorized: Session expired");
+    }
+
     console.error(
-      "Error searching data:",
+      "Error fetching jasa details:",
       error.response?.data?.message || error.message
     );
     throw new Error(
-      `Search failed: ${error.response?.data?.message || error.message}`
+      `Fetching data failed: ${error.response?.data?.message || error.message}`
     );
   }
-}
+};
+
+// Search Bar
+export const searchData = async () => {
+  if (!query.trim()) {
+    return alert("Masukkan kata kunci pencarian!");
+  }
+
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/jasa/search?q=${query.trim()}`
+    );
+    const jasaData = response.data.data;
+
+    if (jasaData.length === 0) {
+      console.log("Tidak ada jasa ditemukan.:", response.data);
+    } else {
+      console.log(" ", response.data);
+    }
+  } catch (err) {
+    console.log("Gagal mengambil data jasa! ", response.data);
+  }
+};
